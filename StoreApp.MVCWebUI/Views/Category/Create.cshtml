@@ -1,0 +1,22 @@
+﻿@model StoreApp.Entity.Category
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h3>Kategory Ekle</h3>
+<hr />
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            @Html.TextBox("Name", null, new { @class = "form-control" })
+
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+}
+

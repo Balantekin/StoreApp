@@ -1,0 +1,61 @@
+﻿@model StoreApp.Entity.Product
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h3>Create</h3>
+<hr />
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            @Html.TextBox("Name", null, new { @class = "form-control" })
+
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Description</label>
+            @Html.TextArea("Description")
+
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Price</label>
+            @Html.TextBox("Price")
+
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Stock</label>
+            @Html.TextBox("Stock")
+
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Image</label>
+            @Html.TextBox("Image")
+
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">IsApproved</label>
+            @Html.CheckBox("IsApproved")
+
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">IsHome</label>
+            @Html.CheckBox("IsHome")
+
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">IsFeatured</label>
+            @Html.CheckBox("IsFeatured")
+
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">IsFeatured</label>
+            @Html.DropDownList("CategoryID", new SelectList(ViewBag.Categories, "Id", "Name"))
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+}
+

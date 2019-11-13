@@ -1,0 +1,52 @@
+﻿@model IEnumerable<StoreApp.Entity.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>  CATEGORİ LİSTESİ  </h3>
+
+@if (TempData["Updated"] != null)
+{
+    string category = TempData["Updated"].ToString();
+
+    <div class="alert alert-success" role="alert">
+        <strong>@category</strong>  has been Updated Successfully...
+    </div>
+}
+
+
+<hr />
+<a href="/Category/Create" class="btn btn-primary" > 
+    <span class="glyphicon glyphicon-plus-sign"></span>
+    Add New Category</a>
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.ID</th>
+                <td>@item.Name</td>
+                
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+

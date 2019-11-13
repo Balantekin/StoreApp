@@ -1,0 +1,89 @@
+﻿@model IEnumerable<StoreApp.Entity.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>  ÜRÜN LİSTESİ  </h3>
+
+@if (TempData["Updated"] != null)
+{
+    string product = TempData["Updated"].ToString();
+
+    <div class="alert alert-success" role="alert">
+        <strong>@product</strong>  has been Updated Successfully...
+    </div>
+}
+
+<hr />
+<a href="/Product/Create" class="btn btn-primary">
+    <span class="glyphicon glyphicon-plus-sign"></span>
+    Add New Product
+</a>
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">Price</th>
+            <th scope="col">IsApproved</th>
+            <th scope="col">IsHome</th>
+            <th scope="col">IsFeatured</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <th scope="row">@item.ID</th>
+            <td>@item.Name</td>
+            <td>
+            <img src="~/Images/Thumbnails/@item.Image" width="120" />
+            </td>
+            <td>@item.Price</td>
+            <td>
+                @if (item.IsApproved)
+                {
+                    <span class="label label-success">Approved</span>
+                }
+                else
+                {
+                    <span class="label label-danger">Pending</span>
+                }
+            </td>
+            <td>
+                @if (item.IsHome)
+                {
+                    <span class="label label-success">Home</span>
+                }
+                else
+                {
+                    <span class="label label-danger">Nope</span>
+                }
+            </td>
+            <td>
+                @if (item.IsFeatured)
+                {
+                    <span class="label label-success">Featured</span>
+                }
+                else
+                {
+                    <span class="label label-danger">Not Featured</span>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
